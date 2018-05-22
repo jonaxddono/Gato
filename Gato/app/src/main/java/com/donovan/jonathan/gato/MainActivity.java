@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    protected Button a1,a2,a3,b1,b2,b3,c1,c2,c3,rst;
+    protected Button a1,a2,a3,b1,b2,b3,c1,c2,c3,d1;
     protected TextView texto;
     protected Button[] ArrButton;
 
@@ -29,6 +29,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         esTurno=true;
         contador=0;
         ganador=false;
+        a1.setClickable(true);
+        a2.setClickable(true);
+        a3.setClickable(true);
+        b1.setClickable(true);
+        b2.setClickable(true);
+        b3.setClickable(true);
+        c1.setClickable(true);
+        c2.setClickable(true);
+        c3.setClickable(true);
     }
 
     @Override
@@ -45,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c1 = (Button) findViewById(R.id.c1);
         c2 = (Button) findViewById(R.id.c2);
         c3 = (Button) findViewById(R.id.c3);
-        rst = (Button) findViewById(R.id.BtnRST);
+        d1 = (Button) findViewById(R.id.d1);
         texto = (TextView) findViewById (R.id.texto);
 
         this.inicializar();
@@ -102,26 +111,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.c3:
                 Matriz[2][2]=x;
                 break;
-            case R.id.BtnRST:
+            case R.id.d1:
+                b.setBackgroundResource(R.drawable.x);
                 this.inicializar();
-                a1.setBackgroundResource(R.drawable.ic_launcher_background);
-                a2.setBackgroundResource(R.drawable.ic_launcher_background);
-                a3.setBackgroundResource(R.drawable.ic_launcher_background);
-                b1.setBackgroundResource(R.drawable.ic_launcher_background);
-                b2.setBackgroundResource(R.drawable.ic_launcher_background);
-                b3.setBackgroundResource(R.drawable.ic_launcher_background);
-                c1.setBackgroundResource(R.drawable.ic_launcher_background);
-                c2.setBackgroundResource(R.drawable.ic_launcher_background);
-                c3.setBackgroundResource(R.drawable.ic_launcher_background);
-                a1.setClickable(true);
-                a2.setClickable(true);
-                a3.setClickable(true);
-                b1.setClickable(true);
-                b2.setClickable(true);
-                b3.setClickable(true);
-                c1.setClickable(true);
-                c2.setClickable(true);
-                c3.setClickable(true);
+                a1.setBackgroundResource(R.drawable.x);
+                a2.setBackgroundResource(R.drawable.x);
+                a3.setBackgroundResource(R.drawable.x);
+                b1.setBackgroundResource(R.drawable.x);
+                b2.setBackgroundResource(R.drawable.x);
+                b3.setBackgroundResource(R.drawable.x);
+                c1.setBackgroundResource(R.drawable.x);
+                c2.setBackgroundResource(R.drawable.x);
+                c3.setBackgroundResource(R.drawable.x);
                 break;
         }
 
@@ -138,31 +139,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void verificarMatriz(){
         for(int i=0;i<3;i++){
+
             if(Matriz[i][0]==R.drawable.x && Matriz[i][1]==R.drawable.x && Matriz[i][2]==R.drawable.x){
                 texto.setText("GANO X!!");
                 ganador=true;
                 this.finalizar();
             }
-        }
-        for(int i=0;i<3;i++){
             if(Matriz[0][i]==R.drawable.x && Matriz[1][i]==R.drawable.x && Matriz[2][i]==R.drawable.x){
                 texto.setText("GANO X!!");
                 ganador=true;
                 this.finalizar();
             }
         }
-
-        /*if(Matriz[0][0]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[2][2]==R.drawable.x){
+        if(Matriz[0][2]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[2][0]==R.drawable.x){
             texto.setText("GANO X!!");
             ganador=true;
             this.finalizar();
         }
 
-        if(Matriz[0][3]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[2][0]==R.drawable.x){
+        if(Matriz[2][2]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[0][0]==R.drawable.x){
             texto.setText("GANO X!!");
             ganador=true;
             this.finalizar();
-        }*/
+        }
+
+
+
 
 
         for(int i=0;i<3;i++){
@@ -171,13 +173,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ganador=true;
                 this.finalizar();
             }
-        }
-        for(int i=0;i<3;i++){
             if(Matriz[0][i]==R.drawable.o && Matriz[1][i]==R.drawable.o && Matriz[2][i]==R.drawable.o){
                 texto.setText("GANO O!!");
                 ganador=true;
                 this.finalizar();
             }
+        }
+
+        if(Matriz[0][2]==R.drawable.o && Matriz[1][1]==R.drawable.o && Matriz[2][0]==R.drawable.o){
+            texto.setText("GANO X!!");
+            ganador=true;
+            this.finalizar();
+        }
+
+        if(Matriz[2][2]==R.drawable.o && Matriz[1][1]==R.drawable.o && Matriz[0][0]==R.drawable.o){
+            texto.setText("GANO X!!");
+            ganador=true;
+            this.finalizar();
         }
     }
     public void finalizar(){
