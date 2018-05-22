@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     int[][] Matriz;
-    boolean esTurno;
+    boolean esTurno,ganador;
 
     protected int contador;
 
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         esTurno=true;
         contador=0;
+        ganador=false;
     }
 
     @Override
@@ -127,11 +128,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         esTurno = !esTurno;
         b.setClickable(false);
         contador++;
-        if(contador>=9){
+        this.verificarMatriz();
+        if(!ganador && contador>=9){
             texto.setText("No gano Nadie!");
             this.finalizar();
-        }else{
-            this.verificarMatriz();
         }
 
     }
@@ -140,49 +140,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for(int i=0;i<3;i++){
             if(Matriz[i][0]==R.drawable.x && Matriz[i][1]==R.drawable.x && Matriz[i][2]==R.drawable.x){
                 texto.setText("GANO X!!");
+                ganador=true;
                 this.finalizar();
             }
         }
         for(int i=0;i<3;i++){
             if(Matriz[0][i]==R.drawable.x && Matriz[1][i]==R.drawable.x && Matriz[2][i]==R.drawable.x){
                 texto.setText("GANO X!!");
+                ganador=true;
                 this.finalizar();
             }
         }
 
-        if(Matriz[0][0]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[2][2]==R.drawable.x){
+        /*if(Matriz[0][0]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[2][2]==R.drawable.x){
             texto.setText("GANO X!!");
+            ganador=true;
             this.finalizar();
         }
 
-        if(Matriz[0][3]==R.drawable.x && Matriz[1][2]==R.drawable.x && Matriz[2][0]==R.drawable.x){
+        if(Matriz[0][3]==R.drawable.x && Matriz[1][1]==R.drawable.x && Matriz[2][0]==R.drawable.x){
             texto.setText("GANO X!!");
+            ganador=true;
             this.finalizar();
-        }
-
+        }*/
 
 
         for(int i=0;i<3;i++){
             if(Matriz[i][0]==R.drawable.o && Matriz[i][1]==R.drawable.o && Matriz[i][2]==R.drawable.o){
                 texto.setText("GANO O!!");
+                ganador=true;
                 this.finalizar();
             }
         }
         for(int i=0;i<3;i++){
             if(Matriz[0][i]==R.drawable.o && Matriz[1][i]==R.drawable.o && Matriz[2][i]==R.drawable.o){
                 texto.setText("GANO O!!");
+                ganador=true;
                 this.finalizar();
             }
-        }
-
-        if(Matriz[0][0]==R.drawable.o && Matriz[1][1]==R.drawable.o && Matriz[2][2]==R.drawable.o){
-            texto.setText("GANO O!!");
-            this.finalizar();
-        }
-
-        if(Matriz[0][3]==R.drawable.o && Matriz[1][2]==R.drawable.o && Matriz[2][0]==R.drawable.o){
-            texto.setText("GANO O!!");
-            this.finalizar();
         }
     }
     public void finalizar(){
