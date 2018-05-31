@@ -181,13 +181,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(Matriz[0][2]==R.drawable.o && Matriz[1][1]==R.drawable.o && Matriz[2][0]==R.drawable.o){
-            texto.setText("GANO X!!");
+            texto.setText("GANO O!!");
             ganador=true;
             this.finalizar();
         }
 
         if(Matriz[2][2]==R.drawable.o && Matriz[1][1]==R.drawable.o && Matriz[0][0]==R.drawable.o){
-            texto.setText("GANO X!!");
+            texto.setText("GANO O!!");
             ganador=true;
             this.finalizar();
         }
